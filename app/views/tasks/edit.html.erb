@@ -1,0 +1,25 @@
+<div class="contacts_list">
+  <h1>Edit Task</h1>
+
+  <% if @task.errors.any? %>
+    <h3>Please fix these errors:</h3>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <form action="/tasks/<%= @task.id %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+
+    <div class="form-group">
+      <input  class="form-control" id="description" name="description" type="text" placeholder="description" value="<%= @task.description %>">
+      <button type="submit" class="btn btn-success">Update Description</button>
+    </div>
+    <input name="complete" type="hidden" value="<%= @task.complete %>">
+
+
+  </form>
+
+  <button class="btn btn-success"><a href="/tasks/<%= @task.id %>" data-confirm=" You sure?" data-method="delete" rel="nofollow">Delete</a></button>

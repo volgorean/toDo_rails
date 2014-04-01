@@ -1,0 +1,19 @@
+<div class="tasks_wrapper">
+  <h1>New Task</h1>
+
+  <% if @task.errors.any? %>
+    <h3>Please fix these errors:</h3>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <form action="/tasks" method="post">
+    <div class="form-group">
+      <input  class="form-control" id="description" name="description" type="text" placeholder="description">
+      <button type="submit" class="btn btn-success">Create Task</button>
+  </div>
+  </form>
+</div>
